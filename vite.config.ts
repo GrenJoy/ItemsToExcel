@@ -16,6 +16,7 @@ export default defineConfig({
         ]
       : []),
   ],
+  root: "client",
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
@@ -24,11 +25,8 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: "../dist/public",
     emptyOutDir: true,
-    rollupOptions: {
-      input: path.resolve(import.meta.dirname, "client/index.html"),
-    },
   },
   server: {
     fs: {
