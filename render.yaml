@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: warframe-inventory-app
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: warframe-inventory-db
+          property: connectionString
+      - key: GEMINI_API_KEY
+        sync: false # Указываем, что ключ будет добавлен вручную
+      - key: SESSION_SECRET
+        sync: false # Указываем, что ключ будет добавлен вручную
+
+databases:
+  - name: warframe-inventory-db
+    databaseName: warframe_inventory
+    user: warframe_user
+    plan: free # Указываем бесплатный план
